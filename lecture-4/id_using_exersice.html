@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID-using-Exersice</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        table {
+            margin-top: 30px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <header id="header"></header>
+    </div>
+
+    <div align="center">
+        <h1 style="color:#2C3539 ;">Marks Table</h1>
+        <table style="background-color: #81d8cf5e;" border="1" cellpadding="15" id="tbl"></table>
+    </div>
+
+    <div align="center" id="image"></div>
+
+    <script>
+
+        var hea = `
+            <nav class="navbar navbar-expand-lg" style="background-color:#cccccca9;">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    </div>
+                </div>
+                </nav>
+        `
+
+        var t = [95, 98, 87, 290, 87, 91, 95, 279, 89, 79, 84, 266, 80, 90, 70, 240];
+        var table = `
+                <thead>
+                    <tr>
+                        <th style="background-color: #81D8D0;">No.</th>
+                        <th style="background-color: #81D8D0;">Name</th>
+                        <th style="background-color: #81D8D0;">Maths</th>
+                        <th style="background-color: #81D8D0;">Science</th>
+                        <th style="background-color: #81D8D0;">English</th>
+                        <th style="background-color: #81D8D0;">Total</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr>
+                        <td>1</td>
+                        <td>Sita</td>
+                        <td>${t[0]}</td>
+                        <td>${t[1]}</td>
+                        <td>${t[2]}</td>
+                        <td>${t[3]}</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Ram</td>
+                        <td>${t[4]}</td>
+                        <td>${t[5]}</td>
+                        <td>${t[6]}</td>
+                        <td>${t[7]}</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Radha</td>
+                        <td>${t[8]}</td>
+                        <td>${t[9]}</td>
+                        <td>${t[10]}</td>
+                        <td>${t[11]}</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Krishna</td>
+                        <td>${t[12]}</td>
+                        <td>${t[13]}</td>
+                        <td>${t[14]}</td>
+                        <td>${t[15]}</td>
+                    </tr>
+                </tbody>
+            `
+
+        var img = `
+                <img style="margin:30px 0 30px 20px; display: inline;" src="https://images.pexels.com/photos/3774243/pexels-photo-3774243.jpeg?cs=srgb&dl=pexels-souvenirpixels-3774243.jpg&fm=jpg" width="85%" height="200" class="img-fluid">
+        `
+
+        document.getElementById(`tbl`).innerHTML = table;
+        document.getElementById(`image`).innerHTML = img;
+        document.getElementById(`header`).innerHTML = hea;
+
+    </script>
+    <script src="bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
