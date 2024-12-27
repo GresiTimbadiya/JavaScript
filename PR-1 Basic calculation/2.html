@@ -1,0 +1,19 @@
+<!-- 2. Write a javascript Program to perform a swapping of two variables.(compulsory user input) -->
+
+<h4 id="before"></h4>
+<h4 id="after"></h4>
+
+<script type="text/javascript">
+
+    var a = parseInt(prompt(`Enter a first value : `));
+    var b = parseInt(prompt(`Enter a second value : `));
+
+    document.getElementById(`before`).innerHTML=`<h3>Before swapping</h3> A = ${a} <br> B = ${b}`;
+
+    a = a + b;
+    b = a - b;
+    a = a - b;
+
+    document.getElementById(`after`).innerHTML = `<h3>After swapping</h3> A = ${a} <br> B = ${b}`;
+
+</script>

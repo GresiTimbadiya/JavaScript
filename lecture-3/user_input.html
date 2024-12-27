@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>swap value</title>
+</head>
+
+<body>
+
+    <h1>Swap value</h1>
+
+    <script>
+
+        let a = parseInt(prompt(`Enter a First value : `));
+        let b = parseInt(prompt(`Enter a Second value : `));
+
+        document.write(`<h3>Before Swap : </h3>`);
+        document.write(`<br>A = ${a}`);
+        document.write(`<br><br>B = ${b}`);
+
+        a = a + b;
+        b = a - b;
+        a = a - b;
+
+        document.write(`<br><br><h3>After Swap : </h3>`);
+        document.write(`<br>A = ${a}`);
+        document.write(`<br><br>B = ${b}`);
+
+        document.write(`<br><h3>Sum = ${a + b}</h3 >`);
+        document.write(`<br>${a} > ${b} = ${a > b}`);
+        document.write(`<br>${a} < ${b} = ${a < b}`);
+
+        if(a>b){
+            document.write(`<br><br>${a} is Big...<br> ${b} is Small...`);
+        }
+        else{
+            document.write(`<br><br>${b} is Big...<br> ${a} is Small...`);
+        }
+
+    </script>
+
+</body>
+
+</html>
