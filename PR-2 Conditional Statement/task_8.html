@@ -1,0 +1,48 @@
+<!-- 8. Write a JavaScript program to find week day from first letter of it using if else if.
+Ex. User Input: M
+Output: Monday -->
+
+<script type="text/javascript">
+
+    var day = prompt(`Enter a first letter of day : `);
+
+    if (day == 'M' || day == 'm') {
+        document.write(`<h2>Monday</h2>`);
+    }
+    else if (day == 'T' || day == 't') {
+
+        var day = prompt(`Enter a Second letter of day : `);
+
+        if (day == 'U' || day == 'u') {
+            document.write(`<h2>Tuesday</h2>`);
+        }
+        else {
+            document.write(`<h2>Thursday</h2>`);
+        }
+    }
+    else if (day == 'W' || day == 'w') {
+        document.write(`<h2>Wednesday</h2>`);
+    }
+    else if (day == 'F' || day == 'f') {
+        document.write(`<h2>Friday</h2>`);
+    }
+    else {
+        if (day == 'S' || day == 's') {
+            var day = prompt(`Enter a Second letter of day : `);
+
+            if (day == 'A' || day == 'a') {
+                document.write(`<h2>Saturday</h2>`);
+            }
+            else {
+                document.write(`<h2>Sunday</h2>`);
+            }
+        }
+        else {
+            if (day != 'M' || day != 'm' || day != 'T' || day != 't' || day != 'W' || day != 'w' || day != 'F' || day != 'f' || day != 'S' || day != 's'
+            ) {
+                document.write(`<h2>Invalid day...</h2>`);
+            }
+        }
+    }
+
+</script>

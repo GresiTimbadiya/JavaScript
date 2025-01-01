@@ -1,0 +1,94 @@
+<!-- 9. Write a JavaScript program to find max of 5 number using nested if. -->
+
+<script type="text/javascript">
+
+    var a = parseInt(prompt(`Enter a first number : `));
+    var b = parseInt(prompt(`Enter a second number : `));
+    var c = parseInt(prompt(`Enter a third number : `));
+    var d = parseInt(prompt(`Enter a fourth number : `));
+    var e = parseInt(prompt(`Enter a fifth number : `));
+
+    document.write(`<h3>${a} , ${b} , ${c} , ${d} , ${e}</h3>`);
+
+    if (a == b && b == c && c == d && d == e) {
+        document.write(`<h2>All numbers are equal...</h2>`);
+    }
+    else {
+        if (a > b) {
+            if (a > c) {
+                if (a > d) {
+                    if (a > e) {
+                        document.write(`<h1>${a} is greater...</h1>`);
+                    }
+                    else {
+                        document.write(`<h1>${e} is greater...</h1>`);
+                    }
+                }
+                else {
+                    if (d > e) {
+                        document.write(`<h1>${d} is greater...</h1>`);
+                    }
+                    else {
+                        document.write(`<h1>${e} is greater...</h1>`);
+                    }
+                }
+            }
+            else {
+                if (c > d) {
+                    if (c > e) {
+                        document.write(`<h1>${c} is greater...</h1>`);
+                    }
+                    else {
+                        document.write(`<h1>${e} is greater...</h1>`);
+                    }
+                }
+                else {
+                    if (d > e) {
+                        document.write(`<h1>${d} is greater...</h1>`);
+                    }
+                    else {
+                        document.write(`<h1>${e} is greater...</h1>`);
+                    }
+                }
+            }
+        }
+        else {
+            if (b > c) {
+                if (b > d) {
+                    if (b > e) {
+                        document.write(`<h1>${b} is greater...</h1>`);
+                    }
+                    else {
+                        document.write(`<h1>${e} is greater...</h1>`);
+                    }
+                }
+                else {
+                    if (d > e) {
+                        document.write(`<h1>${d} is greater...</h1>`);
+                    }
+                    else {
+                        document.write(`<h1>${e} is greater...</h1>`);
+                    }
+                }
+            }
+            else {
+                if (c > d) {
+                    if (c > e) {
+                        document.write(`<h1>${c} is greater...</h1>`);
+                    }
+                    else {
+                        document.write(`<h1>${e} is greater...</h1>`);
+                    }
+                }
+                else {
+                    if (d > e) {
+                        document.write(`<h1>${d} is greater...</h1>`);
+                    }
+                    else {
+                        document.write(`<h1>${e} is greater...</h1>`);
+                    }
+                }
+            }
+        }
+    }
+</script>
