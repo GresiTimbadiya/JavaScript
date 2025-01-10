@@ -1,0 +1,17 @@
+<!-- 6.Write javascript program to print 1 to n number  and all number sum using do while loop . -->
+
+<script type="text/javascript">
+
+    var no = parseInt(prompt(`Enter the last number as long as you want : `));
+
+    var i = 1, sum = 0;
+
+    do {
+        document.write(`<h3>${i}</h3>`);
+        sum += i;
+        i++;
+    } while (i <= no);
+
+    document.write(`<h2>Sum of 1 to ${no} :- ${sum}</h2>`);
+
+</script>
