@@ -1,0 +1,22 @@
+<!-- 6.Write a javascript Program to perform a swapping of two variables. -->
+
+<script type="text/javascript">
+
+    //  TNRS
+
+    const swap = () => {
+
+        let a = parseInt(prompt("Enter first number: "));
+        let b = parseInt(prompt("Enter second number: "));
+
+        document.write(`<h2>After swap :<br> A :- ${a}<br> B :- ${b}</h2>`);
+        a = a + b;
+        b = a - b;
+        a = a - b;
+
+        return document.write(`<h2><br>Before swap :<br> A :- ${a}<br> B :- ${b}</h2>`);
+    }
+
+    swap();
+
+</script>

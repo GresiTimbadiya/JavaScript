@@ -1,0 +1,31 @@
+<!-- 7.Write a JavaScript program to find which number is greter in 3 numbers using nested if else. -->
+
+<script type="text/javascript">
+
+    //  TSRN
+
+    const max = (a, b, c) => {
+
+        document.write(`<h2>${a} , ${b} , ${c}</h2>`);
+
+        if (a > b) {
+            if (a > c) {
+                document.write(`<h2>${a} is the largest number</h2>`);
+            }
+            else {
+                document.write(`<h2>${c} is the largest number</h2>`);
+            }
+        }
+        else {
+            if (b > c) {
+                document.write(`<h2>${b} is the largest number</h2>`);
+            }
+            else {
+                document.write(`<h2>${c} is the largest number</h2>`);
+            }
+        }
+    }
+
+    max(20, 80, 30);
+
+</script>

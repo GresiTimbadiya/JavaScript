@@ -1,0 +1,56 @@
+<!-- 3.Write a JavaScript program to find which number is greter in 4 numbers using nested if else.  -->
+
+<script type="text/javascript">
+
+    //  TNRS
+
+    let a = parseInt(prompt(`Enter first number : `));
+    let b = parseInt(prompt(`Enter second number : `));
+    let c = parseInt(prompt(`Enter third number : `));
+    let d = parseInt(prompt(`Enter fourth number : `));
+
+    document.write(`<h2>${a} , ${b} , ${c} , ${d}</h2>`);
+
+    const number = () => {
+
+        if (a > b) {
+            if (a > c) {
+                if (a > d) {
+                    return document.write(`<h2>${a} is the largest number</h2>`);
+                }
+                else {
+                    return document.write(`<h2>${d} is the largest number</h2>`);
+                }
+            }
+            else {
+                if (c > d) {
+                    return document.write(`<h2>${c} is the largest number</h2>`);
+                }
+                else {
+                    return document.write(`<h2>${d} is the largest number</h2>`);
+                }
+            }
+        }
+        else {
+            if (b > c) {
+                if (b > d) {
+                    return document.write(`<h2>${b} is the largest number</h2>`);
+                }
+                else {
+                    return document.write(`<h2>${d} is the largest number</h2>`);
+                }
+            }
+            else {
+                if (c > d) {
+                    return document.write(`<h2>${c} is the largest number</h2>`);
+                }
+                else {
+                    return document.write(`<h2>${d} is the largest number</h2>`);
+                }
+            }
+        }
+    }
+
+    number();
+
+</script>
