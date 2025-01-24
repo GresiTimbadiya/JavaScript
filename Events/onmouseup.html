@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2 align="center" id="box1" onmouseup="box()">Click Me...</h2>
+    <div id="box"></div>
+
+</body>
+
+<script type="text/javascript">
+
+    const box = () => {
+        let box = document.getElementById('box');
+        box.style.backgroundColor = `Teal`;
+        box.style.width = `200px`;
+        box.style.height = `200px`;
+        box.style.margin = `auto`;
+
+        let box1 = document.getElementById('box1');
+        box1.style.display = `none`;
+    }
+
+</script>
+
+</html>

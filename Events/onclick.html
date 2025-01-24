@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <table border="1" align="center">
+            <tr>
+                <th style="padding: 12px;">Roll No.</th>
+                <th style="padding: 12px;">Name</th>
+                <th style="padding: 12px;">Percentage</th>
+            </tr>
+            <tr>
+                <td><input style="padding: 6px;" type="number" id="roll"></td>
+                <td><input style="padding: 6px;" type="text" id="name"></td>
+                <td><input style="padding: 6px;" type="number" id="per"></td>
+            </tr>
+            <tr>
+                <td style="padding: 6px;" colspan="3"><input type="button"
+                        style="width: 110px; height: 35px; background-color: rgb(173, 216, 230);" value="Merge"
+                        onclick="merge()"></td>
+            </tr>
+        </table>
+
+        <h1 id="ans" align="center"></h1>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+
+    const merge = () => {
+
+        let a = document.getElementById('roll').value;
+        let b = document.getElementById('name').value;
+        let c = document.getElementById('per').value;
+
+        let ans = a + '\n' + b + '\n' + c;
+
+        document.getElementById('ans').innerHTML = `Merge :- ${ans}`;
+
+        document.getElementById('roll').value = '';
+        document.getElementById('name').value = '';
+        document.getElementById('per').value = '';
+    }
+
+
+</script>
+
+</html>

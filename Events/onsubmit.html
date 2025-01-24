@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h1 align="center">Fill the form</h1>
+        <form onsubmit="onSubmit()"
+            style="border: 1px solid rgba(0, 0, 0, 0.418); width: 25%; margin: 0 auto; padding: 20px; text-align: center;">
+            <h3>First Name :- <input type="text" class="name" onfocus="onFocus()"></h3>
+            <h3>Last Name :- <input type="text" class="name1" onfocus="onFocus1()"></h3>
+            <h3>Mo No. :- <input type="Number" class="name2" onfocus="onFocus2()"></h3>
+            <h3>Email :- <input type="email" class="name3" onfocus="onFocus3()"></h3>
+            <h3>Password :- <input type="password" class="name4" onfocus="onFocus4()"></h3><br>
+            <input type="submit" value="Submit" id="submit"
+                style="width: 100px; height: 35px; background-color: aquamarine;">
+        </form>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+
+    const onFocus = () => {
+        let focus = document.querySelector('.name').style.backgroundColor = '#DBE9FA';
+    }
+
+    const onFocus1 = () => {
+        let focus = document.querySelector('.name1').style.backgroundColor = '#DBE9FA';
+    }
+
+    const onFocus2 = () => {
+        let focus = document.querySelector('.name2').style.backgroundColor = '#DBE9FA';
+    }
+
+    const onFocus3 = () => {
+        let focus = document.querySelector('.name3').style.backgroundColor = '#DBE9FA';
+    }
+
+    const onFocus4 = () => {
+        let focus = document.querySelector('.name4').style.backgroundColor = '#DBE9FA';
+    }
+
+    const onSubmit = () => {
+        let submit = document.getElementById('submit').innerHTML = document.write(`<br><br><h1 style="color:green; text-align:center;">Your form is executed successfully...</h1>`);
+    }
+
+</script>
+
+</html>

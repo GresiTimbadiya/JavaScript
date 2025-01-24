@@ -1,0 +1,33 @@
+<h2 id="id"></h2>
+<h2 id="name"></h2>
+<h2 id="age"></h2>
+<h2 id="city"></h2>
+<h2 id="cnt"></h2>
+<h2 id="hobby"></h2>
+<h2 id="main"></h2>
+
+<script type="text/javascript">
+
+    let object = {
+        grid: 101,
+        name: 'Radha',
+        age: 22,
+        address: {
+            country: 'India',
+            district: 'Gujarat',
+            city: 'Surat',
+        },
+        hobbies: ['Playing', 'Singing', 'Dancing', 'Writing'],
+    }
+
+    document.getElementById('id').innerHTML=`GR-id :- ${object?.grid}`;
+    document.getElementById('name').innerHTML=`Name :- ${object?.name}`;
+    document.getElementById('age').innerHTML=`Age :- ${object?.age}`;
+    document.getElementById('city').innerHTML=`City :- ${object?.address?.city}`;
+    document.getElementById('cnt').innerHTML=`Country :- ${object?.address?.country}`;
+    document.getElementById('hobby').innerHTML=`Hobbies :- ${object?.hobbies}`;
+    document.getElementById('main').innerHTML=`Main Hobby :- ${object?.hobbies[3]}`;
+    console.log(object);
+    
+
+</script>

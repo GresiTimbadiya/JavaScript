@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="display: flex; justify-content: center;">
+        <div style="width: 200px; height: 200px; background-color: rgba(139, 0, 139, 0.831);" onmousemove="box()"></div>
+    </div>
+
+    <h1 id="box" align="center"></h1>
+
+</body>
+
+<script type="text/javascript">
+
+    let start = 0;
+
+    const box = () => {
+
+        document.getElementById('box').innerHTML = `Count :- ${start}`;
+        start++;
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Box</title>
+</head>
+
+<body>
+    <div id="box" style="display: none;"></div>
+    <br>
+    <button id="btn" onclick="save()" onfocus="silver()">Click</button>
+    <button id="hide" onclick="hide()" onfocus="silver1()" style="display: none;">Hide</button>
+
+</body>
+
+<script type="text/javascript">
+
+    const save = () => {
+        let box = document.getElementById('box');
+        box.style.backgroundColor = 'lightgreen';
+        box.style.width = '200px';
+        box.style.height = '200px';
+        box.style.display = 'block';
+
+        let click2 = document.getElementById('btn');
+        click2.style.display = 'none';
+
+        let hide = document.getElementById('hide');
+        hide.style.display = 'inline-block';
+    }
+
+    const hide = () => {
+        let box = document.getElementById('box');
+        box.style.display = 'none';
+
+        let click2 = document.getElementById('btn');
+        click2.style.display = 'inline-block';
+
+        let hide = document.getElementById('hide');
+        hide.style.display = 'none';
+    }
+
+    const silver = () => {
+        document.getElementById('btn').style.backgroundColor = 'pink';
+    }
+
+    const silver1 = () => {
+        document.getElementById('hide').style.backgroundColor = 'skyblue';
+    }
+
+</script>
+
+</html>
