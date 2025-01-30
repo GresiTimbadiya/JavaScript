@@ -1,0 +1,27 @@
+<!-- 12.remove duplicate element in array -->
+
+<script type="text/javascript">
+
+    let arr = [22, 77, 55, 44, 77, 99, 33, 11, 55];
+
+    document.write(`Array is :- ${arr}<br><br>`);
+    document.write(`Duplicate elements removed :- `);
+
+    let remove = arr.filter((value, index) => {
+
+        return arr.indexOf(value) == index;
+    })
+
+    document.write(`${remove}`);
+
+    // val = 22,   index = 0,   indexOf(val) = 0,    0 == 0,   true
+    // val = 77,   index = 1,   indexOf(val) = 1,    1 == 1,   true
+    // val = 55,   index = 2,   indexOf(val) = 2,    2 == 2,   true
+    // val = 44,   index = 3,   indexOf(val) = 3,    3 == 3,   true
+    // val = 77,   index = 4,   indexOf(val) = 1,    1 == 4,   false
+    // val = 99,   index = 5,   indexOf(val) = 5,    5 == 5,   true
+    // val = 33,   index = 6,   indexOf(val) = 6,    6 == 6,   true
+    // val = 11,   index = 7,   indexOf(val) = 7,    7 == 7,   true
+    // val = 55,   index = 8,   indexOf(val) = 2,    2 == 8,   false
+
+</script>

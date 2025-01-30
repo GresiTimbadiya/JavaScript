@@ -1,0 +1,29 @@
+<!-- 2. find maximum number in array. -->
+
+<script type="text/javascript">
+
+    let arr = [40, 500, 20, 60, 30, 70];
+
+    document.write(`Array is :- ${arr}<br><br>`);
+
+    let max = arr[0];
+    arr.forEach((val) => {
+
+        if (val > max) {
+            max = val;
+        }
+    })
+
+    document.write(`<h2>Maximum number in array is :- ${max}</h2>`);
+
+
+    //   val     max   (val > max)	 max(after update)
+    
+    //   40      40	    40>40          40
+    //   500	 500    500>40         500  
+    //   20      20	    20>500         500
+    //   60     60	    60>500         500
+    //   30      30	    30>500         500
+    //   70      70	    70>500         500
+
+</script>

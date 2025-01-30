@@ -1,0 +1,28 @@
+<!-- 3. find minimum number in array. -->
+
+<script type="text/javascript">
+
+    let arr = [40, 50, 20, 60, 30, 70];
+
+    document.write(`Array is :- ${arr}<br>`);
+
+    let min = arr[0];
+    arr.forEach((val) => {
+
+        if (val < min) {
+            min = val;
+        }
+    })
+
+    document.write(`<h2>Minimum number in array is :- ${min}</h2>`);
+
+    //   val     min   (val < min)	 min(after update)
+    
+    //   40      40	    40<40          40
+    //   50 	 50     50<40          40 
+    //   20      20	    20<40          20
+    //   60      60	    60<20          20
+    //   30      30	    30<20          20
+    //   70      70	    70<20          20
+
+</script>

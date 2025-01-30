@@ -1,0 +1,28 @@
+<!-- 4. find duplicate element in array. -->
+
+<script type="text/javascript">
+
+    let arr = [34, 56, 12, 90, 34, 12, 45, 67, 45];
+
+    document.write(`Array is :- ${arr}<br><br>`);
+    document.write(`Duplicate elements are :- `);
+
+    let dpl = arr.filter((val, index) => {
+
+        return arr.indexOf(val) != index;
+    })
+
+    document.write(`${dpl}`);
+
+
+    // val = 34,   index = 0,   indexOf(val) = 0,    0 != 0,   false
+    // val = 56,   index = 1,   indexOf(val) = 1,    1 != 1,   false
+    // val = 12,   index = 2,   indexOf(val) = 2,    2 != 2,   false
+    // val = 90,   index = 3,   indexOf(val) = 3,    3 != 3,   false
+    // val = 34,   index = 4,   indexOf(val) = 0,    0 != 4,   true
+    // val = 12,   index = 5,   indexOf(val) = 2,    2 != 5,   true
+    // val = 45,   index = 6,   indexOf(val) = 6,    6 != 6,   false
+    // val = 67,   index = 7,   indexOf(val) = 7,    7 != 7,   false
+    // val = 45,   index = 8,   indexOf(val) = 6,    6 != 8,   true
+
+</script>
