@@ -1,0 +1,25 @@
+<script type="text/javascript">
+
+    class Person {
+        constructor(name, age, country) {
+            this.name = name;
+            this.age = age;
+            this.country = country;
+        }
+
+        details() {
+            document.write(`<h2>Name :- ${this.name}<br> Age :- ${this.age}<br> Country :- ${this.country}</h2>`);
+        }
+    }
+
+    let p1 = new Person("Raj", 21, "India");
+    let p2 = new Person("Neha", 24, "USA");
+    let p3 = new Person("Shiv", 28, "China");
+
+    let arr = [p1, p2, p3];
+
+    document.write("<h1>=> Persons Details</h1>");
+    
+    arr.forEach(val => val.details());
+
+</script>

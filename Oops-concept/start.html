@@ -1,0 +1,54 @@
+<script type="text/javascript">
+
+    class car {
+        color() {
+            let clr = "red";
+            return clr;
+        }
+        name() {
+            let mdl = "Audi";
+            return mdl;
+        }
+        year() {
+            let yr = 2020;
+            return yr;
+        }
+        price() {
+            let prc = 1000000;
+            return prc;
+        }
+    }
+
+    let object = new car;
+
+    document.write(`<h2>Name :- ${object.name()}</h2>`);
+    document.write(`<h2>Color :- ${object.color()}</h2>`);
+    document.write(`<h2>Year :- ${object.year()}</h2>`);
+    document.write(`<h2>Price :- ${object.price()}</h2>`);
+
+
+    class operation {
+        add(a, b) {
+            return a + b;
+        }
+        sub(a, b) {
+            return a - b;
+        }
+        mul(a, b) {
+            return a * b;
+        }
+        div(a, b) {
+            return a / b;
+        }
+    }
+
+    let obj1 = new operation;
+
+    document.write(`<h2>Operation :-</h2>`);
+    document.write(`<h2>A=10, B=5</h2>`);
+    document.write(`<h2>Addition :-  ${obj1.add(10, 5)}</h2>`);
+    document.write(`<h2>Subtraction :-  ${obj1.sub(10, 5)}</h2>`);
+    document.write(`<h2>Multiplication :-  ${obj1.mul(10, 5)}</h2>`);
+    document.write(`<h2>Division :-  ${obj1.div(10, 5)}</h2>`);
+
+</script>

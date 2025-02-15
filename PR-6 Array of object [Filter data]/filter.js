@@ -48,6 +48,7 @@ viewRecord();
 
 const city = () => {
 
+    let city1 = document.getElementById('city').value;
     let city = document.getElementById('city').value;
 
     let tbl = "";

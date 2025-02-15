@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account</title>
+    <style>
+        body {
+            font-family: 'Open-Sans', sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: rgba(135, 207, 235, 0.644);
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            background-color: white;
+        }
+
+        input,
+        button {
+            margin: 10px;
+            padding: 10px;
+            width: 80%;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input {
+            border: 2px solid grey;
+            outline: none;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Bank Account</h2>
+        <p id="account-info"></p>
+        <input type="number" id="amount" placeholder="Enter amount" />
+        <button onclick="deposit()">Deposit</button>
+        <button onclick="withdraw()" style="background-color: #dc3545;">Withdraw</button>
+        <p id="balance"></p>
+    </div>
+
+    <script>
+
+        class BankAccount {
+            constructor(accountNumber, balance) {
+                this.accountNumber = accountNumber;
+                this.balance = balance;
+            }
+
+            deposit(amount) {
+                this.balance += amount;
+                this.updateBalance();
+            }
+
+            withdraw(amount) {
+                if (amount > this.balance) {
+                    alert("Insufficient balance");
+                } else {
+                    this.balance -= amount;
+                }
+                this.updateBalance();
+            }
+
+            accountNo() {
+                document.getElementById('account-info').innerText = `A/c No.: ${this.accountNumber}`;
+                this.updateBalance();
+            }
+
+            updateBalance() {
+                document.getElementById('balance').innerText = `Account Balance: ${this.balance}`;
+            }
+        }
+
+        const account = new BankAccount(676767676, 10000);
+        account.accountNo();
+
+        const deposit = () => {
+            const amount = parseInt(document.getElementById('amount').value);
+
+            if (amount > 0) {
+                account.deposit(amount);
+            } else {
+                alert("Enter a valid amount");
+            }
+
+            document.getElementById('amount').value = '';
+        }
+
+        const withdraw = () => {
+            const amount = document.getElementById('amount').value;
+            document.getElementById('amount').value = '';
+
+            if (amount > 0) {
+                account.withdraw(amount);
+            } else {
+                alert("Enter a valid amount");
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
