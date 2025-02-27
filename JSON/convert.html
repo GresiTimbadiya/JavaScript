@@ -1,0 +1,60 @@
+<script type="text/javascript">
+
+    let data = [
+        {
+            id: 101,
+            name: "Riya",
+            age: 20,
+            country: "India",
+            state: "Gujarat",
+            city: [
+                {
+                    name: "Surat",
+                    area: ["Varachha", "Amroli", "Kamrej", "Olpad", "Kapodra"]
+                },
+                {
+                    name: "Vadodara",
+                    area: ["Akota", "Ravivarpur", "Bapunagar", "Karelibag"]
+                },
+                {
+                    name: "Ahmedabad",
+                    area: ["Kalupur", "Jamalpur", "Dahisar", "Dholka", "Gandhidham"]
+                }
+            ]
+        },
+        {
+            id: 102,
+            name: "Rahul",
+            age: 22,
+            country: "USA",
+            state: "California",
+            city: [
+                {
+                    name: "San Francisco",
+                    area: ["Haight", "Castro", "Sutter"]
+                },
+                {
+                    name: "Los Angeles",
+                    area: ["Hollywood", "Hawthorne", "Beverly"]
+                },
+                {
+                    name: "San Diego",
+                    area: ["El Cajon", "Chula Vista", "San Marcos"]
+                }
+            ]
+        }
+    ];
+
+    let str = JSON.stringify(data); // Convert object to string JSON format
+
+    console.log(str);
+
+    // localStorage.setItem("data", str);  // Permanent save in localstorage
+    
+    // let data = JSON.parse(localStorage.getItem("data"));  // Get from localstorage
+    // console.log(data);
+
+    // let obj = JSON.parse(str); // Convert string to object
+    // console.log(obj);
+
+</script>

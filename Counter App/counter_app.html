@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <style>
+        .main {
+            height: 200px;
+            background-color: white;
+            width: 25%;
+            margin: 90px auto;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn2,
+        .btn1 {
+            padding: 10px 30px;
+            background-color: red;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .btn1 {
+            background-color: green;
+            margin-right: 5px;
+        }
+    </style>
+
+</head>
+
+<body bgcolor="#98AFC7">
+
+    <div class="main" align="center">
+        <h1>Counter App</h1>
+        <h1 style="color: red;" id="cnt"></h1>
+
+        <div>
+            <button class="btn1" onclick="Increment()">+</button>
+            <button class="btn2" id="decrement" onclick="Decrement()">-</button>
+        </div>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+
+    let cnt = 0;
+
+    let btn = document.getElementById('decrement');
+    btn.disabled = true;
+
+    // setInterval(() => {
+    //     cnt++;
+    //     document.getElementById('cnt').innerHTML = cnt;
+
+    //     if (cnt > 0) {
+    //         btn.disabled = false;
+    //     }
+    //     if (cnt == 500) {
+    //         alert("You have reached the maximum limit");
+    //     } 
+    // }, 10)              //  1 Second complete then update the counter
+
+    document.getElementById('cnt').innerHTML = cnt;
+
+    const Increment = () => {
+        cnt++;
+        document.getElementById('cnt').innerHTML = cnt;
+
+        if (cnt > 0) {
+            btn.disabled = false;
+        }
+    }
+
+    const Decrement = () => {
+        cnt--;
+        document.getElementById('cnt').innerHTML = cnt;
+        if (cnt == 0) {
+            btn.disabled = true;
+        }
+    }
+
+</script>
+
+</html>

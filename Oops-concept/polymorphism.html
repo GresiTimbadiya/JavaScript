@@ -1,0 +1,37 @@
+<!-- Same method name in different class -->
+
+<script type="text/javascript">
+
+    class Add {
+        ope(a, b) {
+            return a + b;
+        }
+    }
+    class Sub {
+        ope(a, b) {
+            return a - b;
+        }
+    }
+    class Mul {
+        ope(a, b) {
+            return a * b;
+        }
+    }
+    class Div {
+        ope(a, b) {
+            return a / b;
+        }
+    }
+
+    let obj = new Add();
+    let obj1 = new Sub();
+    let obj2 = new Mul();
+    let obj3 = new Div();
+
+    let arr = [obj, obj1, obj2, obj3];
+
+    arr.forEach((val) => {
+        console.log(val.ope(10, 2));
+    })
+
+</script>

@@ -1,0 +1,44 @@
+<div id="chessboard"></div>
+
+<script>
+    function chessBoard() {
+        let chess = document.getElementById("chessboard");
+        chess.style.border = "4px solid black";
+        chess.style.width = "550px";
+        chess.style.margin = "auto";
+
+
+        for (let i = 0; i < 8; i++) {
+            let row = document.createElement("tr");
+            for (let j = 0; j < 8; j++) {
+                let col = document.createElement("td");
+                col.style.width = "67px";
+                col.style.height = "67px";
+                col.style.border = "1px solid black";
+                col.style.textAlign = "center";
+                col.style.fontSize = "40px";
+                col.style.backgroundColor = (i + j) % 2 == 0 ? "#769656" : "#eeeed2";
+
+                // if(i % 2 == 0) {
+                //     if(j % 2 == 0) {
+                //         col.style.backgroundColor = "#769656";
+                //     } else {
+                //         col.style.backgroundColor = "#eeeed2";
+                //     }
+                // } else {
+                //     if(j % 2 == 0) {
+                //         col.style.backgroundColor = "#eeeed2";
+                //     } else {
+                //         col.style.backgroundColor = "#769656";
+                //     }
+                // }
+
+
+                row.appendChild(col);
+            }
+            chess.appendChild(row);
+        }
+    }
+
+    chessBoard();
+</script>

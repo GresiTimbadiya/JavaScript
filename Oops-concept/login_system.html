@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        input,
+        button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Enter Username">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="login()">Login</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        const users = [
+            { username: 'radha', password: 1234 },
+            { username: 'ravi', password: 5678 },
+            { username: 'Siya', password: 9012 },
+            { username: 'shyam', password: 3456 }
+        ];
+
+        function login() {
+            let user = document.getElementById("username").value;
+            let pass = document.getElementById("password").value;
+
+
+            if (users.find(val => val.username == user && val.password == pass)) {
+                document.getElementById("message").innerHTML = "Login successful!";
+            } else {
+                document.getElementById("message").innerHTML = "Invalid login";
+            }
+        }
+    </script>
+</body>
+
+</html>
