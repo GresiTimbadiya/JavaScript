@@ -19,6 +19,26 @@ const viewTask = () => {
                             <i class="far fa-trash-alt" style="font-size: 17px"></i>
                          </button>
                          </td>
+                         <td>
+                            <select class="form-select" id="status_${val.taskid}" onchange="updateStatus(${val.taskid})">
+                                <option value=''>--Select Status--</option>
+                                <option value='Pending'>Pending</option>
+                                <option value='Cancel'>Cancel</option>
+                                <option value='Success'>Success</option>
+                            </select>
+                         </td>
+                         <td>`
+        if (val.status == "Pending") {
+            tbl += `<p style="color: orange">${val.status}</p>`
+        }
+        else if (val.status == "Cancel") {
+            tbl += `<p style="color: red">${val.status}</p>`
+        }
+        else if (val.status == "Success") {
+            tbl += `<p style="color: green">${val.status}</p>`
+        }
+        tbl +=
+            `</td>
                     </tr>
                 `
     })
@@ -75,22 +95,43 @@ const edit = (id, task) => {
     document.getElementById('edit').style.display = "block";
     document.getElementById('task').value = task;
     document.getElementById('editid').value = id;
-
+    let edit = document.getElementById('edit');
+    edit.disabled = true;
+    document.getElementById('task').addEventListener('input', () => edit.disabled = false);
     // let tasks = saveData();
     // let single = tasks.find(val => val.taskid == id);
-    // document.getElementById('task').value = single.task;
+    // // document.getElementById('task').value = single.task;
 }
 
-// const editTask = () => {
-//     let id = document.getElementById('editid').value;
-//     let task = document.getElementById('task').value;
-//     let tasks = saveData();
-//     let single = tasks.find(val => val.taskid == id);
-//     single.task = task;
-//     localStorage.setItem('alltask', JSON.stringify(tasks));
-//     alert("Record Edited...");
-//     document.getElementById('add').style.display = "block";
-//     document.getElementById('edit').style.display = "none";
-//     document.getElementById('task').value = "";
-//     viewTask();
-// }
+const editTask = () => {
+    let id = document.getElementById('editid').value;
+    let task = document.getElementById('task').value;
+    let tasks = saveData();
+    let up = tasks.map((val) => {
+        if (val.taskid == id) {
+            val.task = task;
+        }
+        return val;
+    })
+    localStorage.setItem('alltask', JSON.stringify(up));
+    alert("Record Edited...");
+    document.getElementById('add').style.display = "block";
+    document.getElementById('edit').style.display = "none";
+    document.getElementById('task').value = "";
+    viewTask();
+}
+
+const updateStatus = (id) => {
+    let taskid = document.getElementById('editid').value;
+    let status = document.getElementById(`status_${id}`).value;
+    let tasks = saveData();
+    let up = tasks.map((val) => {
+        if (val.taskid == id) {
+            val.status = status;
+        }
+        return val;
+    })
+    localStorage.setItem('alltask', JSON.stringify(up));
+    viewTask();
+    document.getElementById('editid').value = "";
+}

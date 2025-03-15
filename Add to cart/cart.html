@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cart Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body style="background-color: #9f8c7638;">
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Shopping Cart</h2>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="background-color: #9f8c7661;">Product</th>
+                            <th style="background-color: #9f8c7661;">Price</th>
+                            <th style="background-color: #9f8c7661;">Quantity</th>
+                            <th style="background-color: #9f8c7661;">Total</th>
+                            <th style="background-color: #9f8c7661;">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="carts"></tbody>
+                </table>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header" style="background-color: #9f8c7682;">
+                        <h5>Order Bill</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="mb-4 fs-5"><strong>Total:- </strong> <span id="finaltotal" class="fw-bold"></span></p>
+                        <a href="./product.html" class="text-decoration-none">
+                            <button class="btn w-75 m-auto d-block text-dark fw-bold py-2"
+                                style="background-color: rgba(100, 148, 237, 0.653);">⬅ Continue Shopping</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="./watchman.js"></script>
+
+<script type="text/javascript">
+
+    const viewCart = () => {
+        let tbl = "";
+        let total = 0;
+        let cart = JSON.parse(localStorage.getItem('record')) || [];
+        cart.map((val) => {
+            total += val.price * val.qnt;
+            tbl += `
+                     <tr>
+                            <td>
+                                <img src="${val.image}" class="me-2 img-fluid" style="max-height: 80px; width: 90px;"> ${val.name}
+                            </td>
+                            <td>${val.price}</td>
+                            <td>
+                                <input type="number" id="qty_${val.id}" onchange="changeQty(${val.id})" class="form-control w-75" value="${val.qnt}" min="1">
+                            </td>
+                            <td>${val.price * val.qnt}</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" onclick="removeCart(${val.id})">Delete</button>
+                            </td>
+                        </tr>
+                 `;
+        })
+        document.getElementById('carts').innerHTML = tbl;
+        document.getElementById('finaltotal').innerHTML = `${total} Rs.`;
+    }
+    viewCart();
+
+    const changeQty = (id) => {
+        let qty = document.getElementById(`qty_${id}`).value;
+        let cart = JSON.parse(localStorage.getItem('record')) || [];
+        let up = cart.map((val) => {
+            if (val.id == id) {
+                val.qnt = qty;
+            }
+            return val;
+        })
+        localStorage.setItem('record', JSON.stringify(up));
+        alert("cart update");
+        viewCart();
+    }
+
+    const removeCart = (id) => {
+        let cart = JSON.parse(localStorage.getItem('record')) || [];
+        let up = cart.filter((val) => val.id != id);
+        localStorage.setItem('record', JSON.stringify(up));
+        viewCart();
+    }
+
+</script>
+
+</html>
