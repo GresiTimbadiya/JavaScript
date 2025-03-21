@@ -1,59 +1,181 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API</title>
+</head>
+
+<body>
+
+    <input type="text" id="city" placeholder="City Name">
+    <button onclick="Weather()">Search</button>
+
+</body>
+
+<script>
+
+    const Weather = () => {
+
+        let city = document.getElementById("city").value;
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c397a192c6397f639564473080cacb2f&units=metric`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById("city").value = "";
+
+            });
+
+    }
+
+</script>
+
+</html> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todos - API</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Weather App</title>
+    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            transition: background 0.5s ease-in-out;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            width: 320px;
+            color: white;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #ff7eb3;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff4d8a;
+        }
+
+        .weather-info {
+            margin-top: 20px;
+        }
+
+        .icon {
+            font-size: 50px;
+            margin: 10px 0;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div align="center">
-        <h2 class="mt-3">Todos - API</h2>
-        <div class="container-fluid">
-            <div class="row mt-4" id="todos">
-
-            </div>
-        </div>
+    <div class="container">
+        <h2>🌤 Weather App</h2>
+        <input type="text" id="city" placeholder="Enter City Name">
+        <button onclick="getWeather()">Search</button>
+        <div class="weather-info" id="weather-info"></div>
     </div>
-</body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-
-    const viewData = () => {
-        $.ajax({
-            type: 'GET',
-            url: 'https://dummyjson.com/todos',
-            success: (response) => {
-                let tbl = "";
-                response.todos.map((val) => {
-                    tbl += `<div class="col-md-3 py-2">
-                                <div class="card h-100">
-                                    <div class="card-body">
-                                        <h6 class="card-title">${val.todo}</h6>`
-
-                                        if (val.completed == true) {
-                                            tbl += `<h5 class="card-text text-success my-3">Completed: True</h5>`
-                                        } else {
-                                            tbl += `<h5 class="card-text text-danger my-3">Completed: False</h5>`
-                                        }
-                    tbl +=
-                                        `<a href="#" class="btn btn-secondary">Click Me</a>
-                                    </div>
-                                </div>
-                            </div>`;
-                });
-                document.getElementById("todos").innerHTML = tbl;
+    <script>
+        const getWeather = async () => {
+            let city = document.getElementById("city").value.trim();
+            if (!city) {
+                alert("Please enter a city name");
+                return;
             }
-        })
-    }
-    viewData();
 
-</script>
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c397a192c6397f639564473080cacb2f&units=metric`;
+            
+            try {
+                let res = await fetch(url);
+                let data = await res.json();
 
+                if (data.cod === "404") {
+                    document.getElementById("weather-info").innerHTML = `<p class="error">❌ City not found. Try again!</p>`;
+                    return;
+                }
+
+                let weatherIcon = getWeatherIcon(data.weather[0].main);
+                document.getElementById("weather-info").innerHTML = `
+                    <h3>${data.name}, ${data.sys.country}</h3>
+                    <div class="icon">${weatherIcon}</div>
+                    <p>🌡️ Temperature: <strong>${data.main.temp}°C</strong></p>
+                    <p>🌬️ Wind Speed: <strong>${data.wind.speed} m/s</strong></p>
+                    <p>💧 Humidity: <strong>${data.main.humidity}%</strong></p>
+                `;
+
+                changeBackground(data.weather[0].main);
+                document.getElementById("city").value = "";
+
+            } catch (error) {
+                document.getElementById("weather-info").innerHTML = `<p class="error">⚠️ Error fetching data. Try again later.</p>`;
+            }
+        };
+
+        const getWeatherIcon = (weather) => {
+            switch (weather) {
+                case "Clear": return "☀️";
+                case "Clouds": return "☁️";
+                case "Rain": return "🌧️";
+                case "Snow": return "❄️";
+                case "Thunderstorm": return "⛈️";
+                default: return "🌡️";
+            }
+        };
+
+        const changeBackground = (weather) => {
+            let bg;
+            switch (weather) {
+                case "Clear": bg = "linear-gradient(135deg, #ffdd00, #ff7eb3)"; break;
+                case "Clouds": bg = "linear-gradient(135deg, #a0c4ff, #d1d1d1)"; break;
+                case "Rain": bg = "linear-gradient(135deg, #74ebd5, #005f73)"; break;
+                case "Snow": bg = "linear-gradient(135deg, #ffffff, #c1d5ff)"; break;
+                case "Thunderstorm": bg = "linear-gradient(135deg, #6b6b6b, #000000)"; break;
+                default: bg = "linear-gradient(135deg, #74ebd5, #acb6e5)";
+            }
+            document.body.style.background = bg;
+        };
+    </script>
+
+</body>
 </html>
