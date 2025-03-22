@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body style="background-color: #d5d6eae0;">
+    <div class="container mt-5">
+        <div class="row justify-content-between">
+            <div class="col-md-6">
+                <h2>Add Todo</h2>
+                <div class="card mt-4">
+                    <div class="card-header">
+                        Add Task
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <input type="hidden" id="editid"><br>
+                                <label class="form-label">Add Task</label>
+                                <input type="text" id="task" placeholder="Enter your task" class="form-control">
+                            </div>
+
+                            <button type="button" id="add" onclick="addTask()" class="btn btn-primary">Submit</button>
+                            <button type="button" id="edit" onclick="editTask()" class="btn btn-success">Edit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>View Todo</h2>
+                <div class="card mt-4">
+                    <div class="card-header d-flex justify-content-between">
+                        View Task
+                        <button class="btn btn-danger" onclick="clearAll()">Clear All</button>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Taskid</th>
+                                    <th scope="col">Task</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="alltask"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const saveData = () => {
+            return localStorage.getItem('alltask') ? JSON.parse(localStorage.getItem('alltask')) : [];
+        }
+
+        const viewTask = () => {
+
+            document.getElementById('add').style.display = "block";
+            document.getElementById('edit').style.display = "none";
+            let tasks = saveData();
+            let tbl = "";
+            tasks.map((val, index) => {
+                tbl += `
+                   <tr>
+                         <td>${val.taskid}</td>
+                         <td>${val.task}</td>
+                         <td>
+                          <button class="btn btn-success btn-sm" style="padding: 5px 11px" onclick="edit('${val.taskid}','${val.task}')">Edit</button>
+                         <button class="btn btn-warning btn-md ms-2" onclick="deletetask(${val.taskid})">
+                            <i class="far fa-trash-alt" style="font-size: 17px"></i>
+                         </button>
+                         </td>
+                    </tr>
+                `
+            })
+            document.getElementById('alltask').innerHTML = tbl;
+        }
+        viewTask();
+
+        const deletetask = (id) => {
+            let tasks = JSON.parse(localStorage.getItem('alltask'));
+            tasks = tasks.filter(val => val.taskid !== id);
+            localStorage.setItem('alltask', JSON.stringify(tasks));
+            viewTask();
+        }
+
+        const clearAll = () => {
+            localStorage.removeItem('alltask');
+            viewTask();
+        }
+
+        const addTask = () => {
+
+            let task = document.getElementById('task').value;
+
+            if (task == "") {
+                alert("Please enter a task!");
+                return false;
+            }
+
+            let obj = {
+                taskid: Math.floor(Math.random() * 10000000),
+                task: task
+            }
+
+            let tasks = saveData();
+
+            let dup = tasks.find(val => val.task == task);
+
+            if (dup) {
+                alert("Task is already exists");
+                document.getElementById('task').value = ""
+                return false;
+            }
+
+            let newdata = [...tasks, obj]; 
+            localStorage.setItem('alltask', JSON.stringify(newdata));
+            alert("record add")
+            document.getElementById('task').value = ""
+            viewTask();
+        }
+
+        const edit = (id, task) => {
+            document.getElementById('add').style.display = "none";
+            document.getElementById('edit').style.display = "block";
+            document.getElementById('task').value = task;
+            document.getElementById('editid').value = id;
+            let edit = document.getElementById('edit');
+            edit.disabled = true;
+            document.getElementById('task').addEventListener('input', () => edit.disabled = false);
+        }
+
+        const editTask = () => {
+            let id = document.getElementById('editid').value;
+            let task = document.getElementById('task').value;
+            let tasks = saveData();
+            let up = tasks.map((val) => {
+                if (val.taskid == id) {
+                    val.task = task;
+                }
+                return val;
+            })
+            localStorage.setItem('alltask', JSON.stringify(up));
+            alert("Record Edited...");
+            document.getElementById('add').style.display = "block";
+            document.getElementById('edit').style.display = "none";
+            document.getElementById('task').value = "";
+            viewTask();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
