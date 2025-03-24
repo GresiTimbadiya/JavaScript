@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Tracker</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnuS_4lOo7s0ymkUvJ1ntk_rdAhUMbBoVuzA&s");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.116);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: white;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            text-align: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        button:hover {
+            background: #ff4757;
+            box-shadow: 0 0 15px rgba(255, 71, 87, 0.8);
+        }
+
+        .stats {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .flag-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .flag-container img {
+            width: 50px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats p {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+            color: #fff;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>COVID-19 Tracker</h1>
+        <input type="text" id="countryInput" placeholder="Enter country name...">
+        <button onclick="covidData()">Get Data</button>
+
+        <div class="stats">
+            <div class="flag-container">
+                <span id="flag">🌍</span>
+            </div>
+            <p>Country: <span id="country">-</span></p>
+            <p>Total Cases: <span id="cases">-</span></p>
+            <p>Total Deaths: <span id="deaths">-</span></p>
+            <p>Total Recovered: <span id="recovered">-</span></p>
+            <p>Total Population: <span id="population">-</span></p>
+        </div>
+    </div>
+
+    <script>
+        function covidData() {
+            const country = document.getElementById("countryInput").value;
+            if (!country) {
+                alert("Please enter a country name!");
+                return;
+            }
+
+            const apiUrl = `https://disease.sh/v3/covid-19/countries/${country}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+
+                    document.getElementById("country").innerHTML = data.country;
+                    document.getElementById("flag").innerHTML = `<img src="${data.countryInfo.flag}" alt="Flag">`;
+                    document.getElementById("cases").textContent = data.cases.toLocaleString();
+                    document.getElementById("deaths").textContent = data.deaths.toLocaleString();
+                    document.getElementById("recovered").textContent = data.recovered.toLocaleString();
+                    document.getElementById("population").textContent = data.population.toLocaleString();
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+            document.getElementById("countryInput").value = "";
+        }
+    </script>
+</body>
+
+</html>
